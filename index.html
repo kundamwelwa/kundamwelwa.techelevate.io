@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +5,232 @@
     <title>TechElevate Alumni App (Branded)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f0f2f5; }
-        header { background: #0F2A4B; color: white; padding: 15px; text-align: center; }
-        header img { max-height: 60px; vertical-align: middle; }
-        nav { background: #fff; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav button { padding: 10px 15px; font-size: 14px; background: #0F2A4B; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        section { display: none; padding: 20px; max-width: 900px; margin: auto; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); margin-top: 20px; }
-        .active { display: block; }
-        h2 { color: #0F2A4B; }
-        a { color: #0F2A4B; text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 15px; }
-        @media (max-width: 600px) {
-            nav button { font-size: 12px; padding: 8px 10px; }
-            section { padding: 15px; margin-top: 15px; }
+        /* General Reset and Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background: #0F2A4B;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-height: 60px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        header h1 {
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        /* Role Selector */
+        .role-selector {
+            text-align: center;
+            padding: 15px;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .role-selector label {
+            font-weight: 500;
+            margin-right: 10px;
+            color: #0F2A4B;
+        }
+        .role-selector select {
+            padding: 8px 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            color: #0F2A4B;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .role-selector select:focus {
+            outline: none;
+            border-color: #0F2A4B;
+        }
+
+        /* Navigation Styling */
+        nav {
+            background: #fff;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 15px auto;
+            max-width: 960px;
+            border-radius: 8px;
+        }
+        nav button {
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: #0F2A4B;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+        nav button:hover {
+            background: #1a3c6e;
+            transform: translateY(-1px);
+        }
+        nav button:active {
+            transform: translateY(0);
+        }
+
+        /* Section Styling */
+        section {
+            display: none;
+            padding: 25px;
+            max-width: 960px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+        section.active {
+            display: block;
+        }
+        section h2 {
+            color: #0F2A4B;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        section h3 {
+            color: #0F2A4B;
+            font-size: 1.3rem;
+            margin: 15px 0 10px;
+        }
+        section p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+        section a {
+            color: #0F2A4B;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+        section a:hover {
+            color: #1a3c6e;
+            text-decoration: underline;
+        }
+
+        /* Form and Input Styling */
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #333;
+            background: #fff;
+            transition: border-color 0.3s;
+        }
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #0F2A4B;
+        }
+        button {
+            padding: 12px 24px;
+            background: #0F2A4B;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #1a3c6e;
+        }
+
+        /* Offer Letter Preview */
+        pre#letterPreview {
+            background: #e8ecef;
+            padding: 20px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        /* Lists */
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            nav {
+                padding: 10px;
+                gap: 8px;
+            }
+            nav button {
+                font-size: 0.85rem;
+                padding: 8px 14px;
+            }
+            section {
+                padding: 20px;
+                margin: 15px;
+            }
+            section h2 {
+                font-size: 1.4rem;
+            }
+        }
+        @media (max-width: 480px) {
+            header img {
+                max-height: 50px;
+            }
+            .role-selector select {
+                width: 100%;
+                margin-top: 10px;
+            }
+            nav button {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            section {
+                padding: 15px;
+                margin: 10px;
+            }
         }
     </style>
     <script>
@@ -35,7 +248,7 @@
         <h1>TechElevate Alumni App</h1>
     </header>
     
-    <div style="text-align:center; padding: 10px;">
+    <div class="role-selector">
         <label for="roleSelect"><strong>Select Role:</strong></label>
         <select id="roleSelect" onchange="filterNavByRole()">
             <option value="alumni">Alumni</option>
@@ -63,7 +276,7 @@
         window.onload = filterNavByRole;
     </script>
 
-<nav>
+    <nav>
         <button onclick="showScreen('login')">Login</button>
         <button onclick="showScreen('dashboard')">Dashboard</button>
         <button onclick="showScreen('profile')">Profile</button>
@@ -77,45 +290,38 @@
         <button onclick="showScreen('premium')">Premium</button>
         <button onclick="showScreen('ai')">AI Coach</button>
         <button onclick="showScreen('impact')">Impact</button>
-    
         <button onclick="showScreen('schooladmin')">School Admin</button>
         <button onclick="showScreen('schoolfundraising')">School Fundraising</button>
         <button onclick="showScreen('mentorshipcoordination')">Mentorship Coordination</button>
         <button onclick="showScreen('analytics')">Analytics Dashboard</button>
         <button onclick="showScreen('contentuploads')">Content Uploads</button>
-
-    
         <button onclick="showScreen('employerdashboard')">Employer Dashboard</button>
         <button onclick="showScreen('jobposting')">Job Posting</button>
         <button onclick="showScreen('candidate')">Candidate Management</button>
         <button onclick="showScreen('companyprofile')">Company Profile</button>
         <button onclick="showScreen('employerevents')">Employer Events</button>
-
-
-    
         <button onclick="showScreen('admindashboard')">Admin Dashboard</button>
         <button onclick="showScreen('cms')">CMS</button>
         <button onclick="showScreen('reporting')">Automated Reports</button>
         <button onclick="showScreen('accesscontrol')">Access Control</button>
         <button onclick="showScreen('support')">Support Tickets</button>
-
     </nav>
     
-<section id="login" class="active">
-    <h2>Login</h2>
-    <p>
-        <input type="text" id="loginUser" placeholder="Email / Phone" style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br>
-        <input type="password" id="loginPass" placeholder="Password" style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br>
-        <label for="loginRole"><strong>Select Role:</strong></label>
-        <select id="loginRole" style="width: 100%; padding: 10px; margin-bottom: 10px;">
-            <option value="alumni">Alumni</option>
-            <option value="school">School Admin</option>
-            <option value="employer">Employer</option>
-            <option value="admin">TechElevate Admin</option>
-        </select><br>
-        <button onclick="simulateLogin()" style="padding: 10px 20px; background-color: #0F2A4B; color: white; border: none; border-radius: 5px;">Login</button>
-    </p>
-</section>
+    <section id="login" class="active">
+        <h2>Login</h2>
+        <p>
+            <input type="text" id="loginUser" placeholder="Email / Phone" investigar: Email or phone number" />
+            <input type="password" id="loginPass" placeholder="Password" />
+            <label for="loginRole"><strong>Select Role:</strong></label>
+            <select id="loginRole">
+                <option value="alumni">Alumni</option>
+                <option value="school">School Admin</option>
+                <option value="employer">Employer</option>
+                <option value="admin">TechElevate Admin</option>
+            </select>
+            <button onclick="simulateLogin()">Login</button>
+        </p>
+    </section>
 
     <section id="dashboard"><h2>Dashboard</h2><p>Quick access to features</p><a onclick="showScreen('directory')">→ Directory</a><br><a onclick="showScreen('jobs')">→ Jobs</a></section>
     <section id="profile"><h2>Profile Setup</h2><p>Upload photo, education, etc.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
@@ -136,59 +342,57 @@
     <section id="analytics"><h2>Analytics Dashboard</h2><p>Analyze alumni data by region, industry, and activity.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
     <section id="contentuploads"><h2>Content Uploads</h2><p>Post alumni stories, messages, and event announcements.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
 
-
     <section id="employerdashboard"><h2>Employer Dashboard</h2><p>Monitor job posts, applications, and hires in real time.</p>
-<ul>
-  <li><strong>Verified College Endorsements:</strong> Profiles backed by academic records.</li>
-  <li><strong>Faculty Referrals:</strong> Direct endorsements from lecturers or advisors.</li>
-  <li><strong>Curriculum-to-Career Matchmaking:</strong> Roles aligned with specific programs completed.</li>
-  <li><strong>Built-in Internship Tracking:</strong> Access candidates with verified internship history.</li>
-  <li><strong>Placement Dashboards:</strong> See where graduates go and how they perform.</li>
-  <li><strong>Employer-Coordinator Communication:</strong> Message institutions directly for custom partnerships.</li>
-  <li><strong>College Events Integration:</strong> Seamlessly participate in career days and expos.</li>
-</ul>
-<a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
+        <ul>
+            <li><strong>Verified College Endorsements:</strong> Profiles backed by academic records.</li>
+            <li><strong>Faculty Referrals:</strong> Direct endorsements from lecturers or advisors.</li>
+            <li><strong>Curriculum-to-Career Matchmaking:</strong> Roles aligned with specific programs completed.</li>
+            <li><strong>Built-in Internship Tracking:</strong> Access candidates with verified internship history.</li>
+            <li><strong>Placement Dashboards:</strong> See where graduates go and how they perform.</li>
+            <li><strong>Employer-Coordinator Communication:</strong> Message institutions directly for custom partnerships.</li>
+            <li><strong>College Events Integration:</strong> Seamlessly participate in career days and expos.</li>
+        </ul>
+        <a onclick="showScreen('dashboard')">← Back to Dashboard</a>
+    </section>
     <section id="jobposting"><h2>Job Posting Portal</h2><p>Create and manage job or internship listings.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
     <section id="candidate">
-<h3>Candidate Management</h3>
-<p>Below is the offer letter generator integrated for selected candidates.</p>
-    <div id="offergen">
-      <h4>Generate Offer Letter</h4>
-      <label>Graduate Name</label><br><input id="gradName" style="width:100%"><br>
-      <label>Position</label><br><input id="position" style="width:100%"><br>
-      <label>Monthly Salary (ZMW)</label><br><input id="salary" style="width:100%"><br>
-      <label>Start Date</label><br><input type="date" id="startDate" style="width:100%"><br>
-      <label>Employer Contact Name</label><br><input id="hrName" style="width:100%"><br>
-      <label>Graduate Signature</label><br><input id="gradSign" style="width:100%"><br>
-      <label>Employer Signature</label><br><input id="empSign" style="width:100%"><br><br>
-      <button onclick="generateOfferLetter()">Generate Offer</button>
-      <button onclick="downloadPDF()">Download PDF</button>
-      <pre id="letterPreview" style="background:#eef; padding:1em; white-space:pre-wrap; margin-top:1em;"></pre>
-    </div>
-    <h2>Candidate Management</h2><p>Filter and review alumni candidates efficiently.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
+        <h3>Candidate Management</h3>
+        <p>Below is the offer letter generator integrated for selected candidates.</p>
+        <div id="offergen">
+            <h4>Generate Offer Letter</h4>
+            <label>Graduate Name</label><br><input id="gradName"><br>
+            <label>Position</label><br><input id="position"><br>
+            <label>Monthly Salary (ZMW)</label><br><input id="salary"><br>
+            <label>Start Date</label><br><input type="date" id="startDate"><br>
+            <label>Employer Contact Name</label><br><input id="hrName"><br>
+            <label>Graduate Signature</label><br><input id="gradSign"><br>
+            <label>Employer Signature</label><br><input id="empSign"><br><br>
+            <button onclick="generateOfferLetter()">Generate Offer</button>
+            <button onclick="downloadPDF()">Download PDF</button>
+            <pre id="letterPreview"></pre>
+        </div>
+        <h2>Candidate Management</h2><p>Filter and review alumni candidates efficiently.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a>
+    </section>
     <section id="companyprofile"><h2>Company Profile Showcase</h2><p>Highlight your company to attract alumni talent.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
     <section id="employerevents"><h2>Employer Events</h2><p>Participate in virtual job fairs and career days.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
-
 
     <section id="admindashboard"><h2>Global Admin Dashboard</h2><p>Access platform-wide statistics and system performance analytics.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
     <section id="cms"><h2>Content Management System (CMS)</h2><p>Publish announcements, events, and success stories.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
     <section id="reporting"><h2>Automated Reporting</h2><p>Generate and export stakeholder-friendly reports.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
     <section id="accesscontrol"><h2>Access Control & Moderation</h2><p>Manage roles, permissions, and platform behavior.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
-    <section id="support"><h2>Support Ticket System</h2><p>Track and resolve issues from users across all roles.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a>
-<section id="offergen"><h2>Offer Letter Generator</h2>
-<label>Graduate Name</label><br><input id="gradName" style="width:100%"><br>
-<label>Position</label><br><input id="position" style="width:100%"><br>
-<label>Monthly Salary (ZMW)</label><br><input id="salary" style="width:100%"><br>
-<label>Start Date</label><br><input type="date" id="startDate" style="width:100%"><br>
-<label>Employer Contact Name</label><br><input id="hrName" style="width:100%"><br>
-<label>Graduate Signature</label><br><input id="gradSign" style="width:100%"><br>
-<label>Employer Signature</label><br><input id="empSign" style="width:100%"><br><br>
-<button onclick="generateOfferLetter()">Generate Offer</button>
-<button onclick="downloadPDF()">Download PDF</button>
-<pre id="letterPreview" style="background:#eef; padding:1em; white-space:pre-wrap; margin-top:1em;"></pre>
-</section>
-</section>
-
+    <section id="support"><h2>Support Ticket System</h2><p>Track and resolve issues from users across all roles.</p><a onclick="showScreen('dashboard')">← Back to Dashboard</a></section>
+    <section id="offergen"><h2>Offer Letter Generator</h2>
+        <label>Graduate Name</label><br><input id="gradName"><br>
+        <label>Position</label><br><input id="position"><br>
+        <label>Monthly Salary (ZMW)</label><br><input id="salary"><br>
+        <label>Start Date</label><br><input type="date" id="startDate"><br>
+        <label>Employer Contact Name</label><br><input id="hrName"><br>
+        <label>Graduate Signature</label><br><input id="gradSign"><br>
+        <label>Employer Signature</label><br><input id="empSign"><br><br>
+        <button onclick="generateOfferLetter()">Generate Offer</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+        <pre id="letterPreview"></pre>
+    </section>
 
     <script>
         function simulateLogin() {
@@ -199,32 +403,30 @@
         }
     </script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-function generateOfferLetter() {
-  const name = document.getElementById('gradName').value;
-  const position = document.getElementById('position').value;
-  const salary = document.getElementById('salary').value;
-  const start = document.getElementById('startDate').value;
-  const hr = document.getElementById('hrName').value;
-  const gradSign = document.getElementById('gradSign').value;
-  const empSign = document.getElementById('empSign').value;
-  const letter = `Dear ${name},\n\nWe are pleased to offer you the position of ${position} at our organization. Your monthly salary will be ZMW ${salary}, and your start date is ${start}.\n\nPlease report to ${hr} for onboarding.\n\nWe look forward to working with you.\n\nSincerely,\n${empSign}\nEmployer – TechElevate Partner\n\n-----------------------------\nGraduate Signature: ${gradSign}`;
-  document.getElementById('letterPreview').textContent = letter;
-}
-function downloadPDF() {
-  const element = document.getElementById('letterPreview');
-  const opt = {
-    margin: 0.5,
-    filename: 'Offer_Letter.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-  };
-  html2pdf().from(element).set(opt).save();
-}
-</script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function generateOfferLetter() {
+            const name = document.getElementById('gradName').value;
+            const position = document.getElementById('position').value;
+            const salary = document.getElementById('salary').value;
+            const start = document.getElementById('startDate').value;
+            const hr = document.getElementById('hrName').value;
+            const gradSign = document.getElementById('gradSign').value;
+            const empSign = document.getElementById('empSign').value;
+            const letter = `Dear ${name},\n\nWe are pleased to offer you the position of ${position} at our organization. Your monthly salary will be ZMW ${salary}, and your start date is ${start}.\n\nPlease report to ${hr} for onboarding.\n\nWe look forward to working with you.\n\nSincerely,\n${empSign}\nEmployer – TechElevate Partner\n\n-----------------------------\nGraduate Signature: ${gradSign}`;
+            document.getElementById('letterPreview').textContent = letter;
+        }
+        function downloadPDF() {
+            const element = document.getElementById('letterPreview');
+            const opt = {
+                margin: 0.5,
+                filename: 'Offer_Letter.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        }
+    </script>
 </body>
 </html>
